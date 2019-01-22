@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { compose } from "redux";
 import { connect } from "react-redux";
+import { BlurView } from "expo";
 
 import AppMenu from "../../components/AppMenu/AppMenu";
 import FileList from "../../components/FileList/FileList";
@@ -46,6 +47,8 @@ class Home extends Component {
 
   render() {
     const { navigation, filesState } = this.props;
+    const uri =
+      "https://s3.amazonaws.com/exp-icon-assets/ExpoEmptyManifest_192.png";
 
     return (
       <View style={styles.container}>
@@ -60,12 +63,25 @@ class Home extends Component {
         </View>
 
         <FileList />
+
+        <BlurView
+          tint="dark"
+          intensity={50}
+          style={[StyleSheet.absoluteFill, styles.blur]}
+        />
+
+        <View style={styles.drawer}>
+          <Text>Random content</Text>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  blur: {
+    zIndex: 3
+  },
   container: {
     flex: 1,
     justifyContent: "flex-start",
@@ -87,6 +103,16 @@ const styles = StyleSheet.create({
     letterSpacing: -0.2,
     paddingLeft: 20,
     color: "#000000"
+  },
+  drawer: {
+    backgroundColor: "#fff",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 200, // temp
+    display: "flex",
+    zIndex: 4
   }
 });
 
