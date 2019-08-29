@@ -413,19 +413,22 @@ class Home extends Component {
           Cover Icon
           </Text>
 
-        <View style={styles.iconSelection}>
+        <View style={styles.iconSelection} key={this.state.selectedIcon}>
           {
             folderIconsList.map((value, i) => {
               let localIcon = (typeof this.state.selectedIcon === 'number' && this.state.selectedIcon >= 0) ? this.state.selectedIcon : ((folder && folder.icon) ? folder.icon.id : null);
               let isSelected = (localIcon ? localIcon - 1 === i : false);
               let iconValue = isSelected ? 0 : i + 1;
 
-              return (<TouchableHighlight key={i}
+              return <TouchableHighlight key={i}
                 style={styles.iconButton}
                 underlayColor="#F2F5FF"
-                onPress={() => { this.setState({ selectedIcon: iconValue }) }}>
-                {isSelected ? <Icon name={value} color="#4385F4" style={styles.iconImage} width="30" height="30" /> : <Icon name={value} color={'grey'} style={styles.iconImage} width="30" height="30" />}
-              </TouchableHighlight>)
+                onPress={() => {
+                  console.log(iconValue);
+                  this.setState({ selectedIcon: iconValue })
+                }}>
+                <Icon name={value} color={isSelected ? '#4385F4' : 'grey'} width={30} height={30} style={styles.iconImage} />
+              </TouchableHighlight>
             })
           }
         </View>
