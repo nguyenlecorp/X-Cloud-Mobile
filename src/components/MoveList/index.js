@@ -77,10 +77,7 @@ const styles = StyleSheet.create({
   },
   buttonView: {
     flexDirection: "row",
-    justifyContent: "space-evenly",
-    paddingTop: 9,
-    paddingBottom: 5
-
+    justifyContent: "space-evenly"
   },
   button: {
     margin: 10,

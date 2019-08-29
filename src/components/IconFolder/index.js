@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
-import { Svg } from "expo";
+import * as Svg from 'react-native-svg';
 
 import { colors } from "../../constants";
 

@@ -9,7 +9,7 @@ import {
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { withNavigation } from "react-navigation";
-import { Svg } from "expo";
+import * as Svg from 'react-native-svg';
 
 const { Defs, LinearGradient, Path, Stop } = Svg;
 
