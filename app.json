@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "X Cloud Mobile",
+    "name": "X Cloud",
     "slug": "x-cloud",
     "privacy": "public",
     "sdkVersion": "34.0.0",
@@ -9,7 +9,7 @@
       "android",
       "web"
     ],
-    "version": "1.0.2",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -34,8 +34,8 @@
     },
     "android": {
       "package": "com.internxt.cloud",
-      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
-      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+      "publishBundlePath": "android\\app\\src\\main\\assets\\shell-app.bundle",
+      "publishManifestPath": "android\\app\\src\\main\\assets\\shell-app-manifest.json"
     }
   }
 }

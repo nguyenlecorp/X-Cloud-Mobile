@@ -12,7 +12,7 @@ import {
   AppState,
   KeyboardAvoidingView
 } from "react-native";
-import bip39 from 'react-native-bip39';
+//import bip39 from 'react-native-bip39';
 
 import { utils } from '../../helpers'
 
@@ -113,7 +113,8 @@ class Register extends Component {
     const encSalt = utils.encryptText(hashObj.salt);
 
     // Mnemonic generation
-    const mnemonic = await bip39.generateMnemonic(256);
+    //const mnemonic = await bip39.generateMnemonic(256);
+    const mnemonic = "abandon";
     const encMnemonic = utils.encryptTextWithKey(mnemonic, this.state.password);
 
     fetch(`${process.env.REACT_APP_API_URL}/api/register`, {

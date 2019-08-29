@@ -11,7 +11,6 @@ import {
   Image,
   KeyboardAvoidingView
 } from "react-native";
-import VersionNumber from 'react-native-version-number';
 
 import { utils } from './../../helpers'
 
@@ -228,7 +227,7 @@ class SignIn extends Component {
             </TouchableHighlight>
           </View>
         </View>
-        <Text style={styles.versionLabel}>v{VersionNumber.appVersion}.{VersionNumber.buildVersion}</Text>
+        <Text style={styles.versionLabel}>v1.1.0</Text>
       </KeyboardAvoidingView>
 
     );
