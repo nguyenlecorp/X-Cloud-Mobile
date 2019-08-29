@@ -117,7 +117,7 @@ class Register extends Component {
     const mnemonic = "abandon";
     const encMnemonic = utils.encryptTextWithKey(mnemonic, this.state.password);
 
-    fetch(`${process.env.REACT_APP_API_URL}/api/register`, {
+    fetch(`${process && process.env && process.env.REACT_APP_API_URL}/api/register`, {
       method: 'POST',
       headers: {
         "content-type": "application/json; charset=utf-8",

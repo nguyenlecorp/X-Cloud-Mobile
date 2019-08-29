@@ -17,13 +17,13 @@ function passToHash(passObject) {
 
 // AES Plain text encryption method
 function encryptText(textToEncrypt) {
-  let password = process.env.REACT_APP_CRYPTO_SECRET; // Force env var loading
+  let password = process && process.env && process.env.REACT_APP_CRYPTO_SECRET; // Force env var loading
   return encryptTextWithKey(textToEncrypt, password);
 }
 
 // AES Plain text decryption method
 function decryptText(encryptedText) {
-  let password = process.env.REACT_APP_CRYPTO_SECRET; // Force env var loading
+  let password = process && process.env && process.env.REACT_APP_CRYPTO_SECRET; // Force env var loading
   return decryptTextWithKey(encryptedText, password);
 }
 
@@ -65,10 +65,10 @@ function removeAccents(string) {
 // Method to short url with Kutt.it service
 async function shortUrl(url) {
   try {
-    const result = await fetch(`${process.env.REACT_APP_SHORTER_API_URL}`, {
+    const result = await fetch(`${process && process.env && process.env.REACT_APP_SHORTER_API_URL}`, {
       method: 'POST',
       headers: {  
-        'x-api-key': `${process.env.REACT_APP_SHORTER_API_KEY}`,
+        'x-api-key': `${process && process.env && process.env.REACT_APP_SHORTER_API_KEY}`,
         'Content-type': "application/json"
       },
       body: JSON.stringify({

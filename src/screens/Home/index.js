@@ -130,7 +130,7 @@ class Home extends Component {
       };
 
       // Generate token
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/storage/share/file/${fileId}`, {
+      const res = await fetch(`${process && process.env && process.env.REACT_APP_API_URL}/api/storage/share/file/${fileId}`, {
         method: 'POST',
         headers
       });
@@ -152,13 +152,13 @@ class Home extends Component {
     // Get file token
     const linkToken = await this.getFileToken(item);
     // Open file on browser
-    Linking.openURL(`${process.env.REACT_APP_PROXY_URL}/${process.env.REACT_APP_API_URL}/api/storage/share/${linkToken}`);
+    Linking.openURL(`${process && process.env && process.env.REACT_APP_PROXY_URL}/${process && process.env && process.env.REACT_APP_API_URL}/api/storage/share/${linkToken}`);
   }
 
   shareFile = async (item) => {
     // Get file token
     const linkToken = await this.getFileToken(item);
-    const url = `${process.env.REACT_APP_PROXY_URL}/${process.env.REACT_APP_API_URL}/api/storage/share/${linkToken}`;
+    const url = `${process && process.env && process.env.REACT_APP_PROXY_URL}/${process && process.env && process.env.REACT_APP_API_URL}/api/storage/share/${linkToken}`;
 
     const shortedUrl = await utils.shortUrl(url);
 
@@ -174,7 +174,7 @@ class Home extends Component {
     const token = this.props.authenticationState.token;
     const mnemonic = this.props.authenticationState.user.mnemonic;
     const isFolder = !(itemToDelete.size && itemToDelete.size >= 0);
-    const url = isFolder ? `${process.env.REACT_APP_API_URL}/api/storage/folder/${itemToDelete.id}` : `${process.env.REACT_APP_API_URL}/api/storage/bucket/${itemToDelete.bucket}/file/${itemToDelete.fileId}`
+    const url = isFolder ? `${process && process.env && process.env.REACT_APP_API_URL}/api/storage/folder/${itemToDelete.id}` : `${process && process.env && process.env.REACT_APP_API_URL}/api/storage/bucket/${itemToDelete.bucket}/file/${itemToDelete.fileId}`
 
     fetch(url, {
       method: 'DELETE',
@@ -221,7 +221,7 @@ class Home extends Component {
     const token = this.props.authenticationState.token;
     const mnemonic = this.props.authenticationState.user.mnemonic;
 
-    fetch(`${process.env.REACT_APP_API_URL}/api/storage/file/${this.props.filesState.selectedFile.fileId}/meta`, {
+    fetch(`${process && process.env && process.env.REACT_APP_API_URL}/api/storage/file/${this.props.filesState.selectedFile.fileId}/meta`, {
       method: 'POST',
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -488,7 +488,7 @@ class Home extends Component {
   loadUsage = () => {
     const user = this.props.authenticationState.user.email;
 
-    fetch(`${process.env.REACT_APP_API_URL}/api/limit`, {
+    fetch(`${process && process.env && process.env.REACT_APP_API_URL}/api/limit`, {
       method: 'post',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
@@ -504,7 +504,7 @@ class Home extends Component {
         console.log(err);
       });
 
-    fetch(`${process.env.REACT_APP_API_URL}/api/usage`, {
+    fetch(`${process && process.env && process.env.REACT_APP_API_URL}/api/usage`, {
       method: 'post',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ email: user })

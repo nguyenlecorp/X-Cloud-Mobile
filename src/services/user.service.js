@@ -1,6 +1,6 @@
 import { deviceStorage, utils } from "../helpers";
 
-const { REACT_APP_API_URL } = process.env;
+const { REACT_APP_API_URL } = process && process.env && process.env;
 
 export const userService = {
   signin,
@@ -16,7 +16,7 @@ function signin(email, password, sKey, twoFactorCode) {
     const hashObj = utils.passToHash({ password, salt });
     const encPass = utils.encryptText(hashObj.hash);
 
-    fetch(`${process.env.REACT_APP_API_URL}/api/access`, {
+    fetch(`${process && process.env && process.env.REACT_APP_API_URL}/api/access`, {
       method: "POST",
       headers: { "content-type": "application/json; charset=utf-8" },
       body: JSON.stringify({

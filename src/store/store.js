@@ -7,7 +7,7 @@ import reducer from "../reducers";
 const ENABLE_DEBUGGING = true;
 
 const lightweightLoggerMiddleware = store => next => action => {
-  if (process.env.NODE_ENV == 'development' && ENABLE_DEBUGGING) {
+  if (process && process.env && process.env.NODE_ENV == 'development' && ENABLE_DEBUGGING) {
     //console.log('[REDUX LOG] Initial state: ', store.getState());
     console.log('[REDUX LOG] Action: ', action.type);
   }

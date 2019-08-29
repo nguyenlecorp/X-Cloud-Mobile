@@ -65,7 +65,7 @@ class SignIn extends Component {
       return;
     }
 
-    fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
+    fetch(`${process && process.env && process.env.REACT_APP_API_URL}/api/login`, {
       method: 'POST',
       headers: { "content-type": "application/json; charset=utf-8" },
       body: JSON.stringify({ email: this.state.email })
@@ -86,7 +86,7 @@ class SignIn extends Component {
               const hashObj = utils.passToHash({ password: this.state.pasword, salt });
               const encPass = utils.encryptText(hashObj.hash);
 
-              fetch(`${process.env.REACT_APP_API_URL}/api/access`, {
+              fetch(`${process && process.env && process.env.REACT_APP_API_URL}/api/access`, {
                 method: "POST",
                 headers: { "content-type": "application/json; charset=utf-8" },
                 body: JSON.stringify({
@@ -106,7 +106,7 @@ class SignIn extends Component {
                     const mnemonicEncrypted = resp.data.user.mnemonic;
                     const mnemonicDecrypted = utils.decryptTextWithKey(mnemonicEncrypted, this.state.pasword);
 
-                    fetch(`${process.env.REACT_APP_API_URL}/api/initialize`, {
+                    fetch(`${process && process.env && process.env.REACT_APP_API_URL}/api/initialize`, {
                       method: 'POST',
                       headers: {
                         "Authorization": `Bearer ${resp.data.token}`,

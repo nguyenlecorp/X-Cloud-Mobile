@@ -1,6 +1,6 @@
 import { deviceStorage, inxt } from "../helpers";
 import { sortTypes } from "../constants";
-const { REACT_APP_API_URL } = process.env;
+const { REACT_APP_API_URL } = process && process.env && process.env;
 
 export const fileService = {
   downloadFile,
