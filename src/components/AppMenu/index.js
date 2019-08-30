@@ -11,7 +11,8 @@ import {
 } from "react-native";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { DocumentPicker, ImagePicker, Permissions } from 'expo';
+import { DocumentPicker, ImagePicker } from 'expo';
+import * as Permissions from 'expo-permissions';
 
 import MenuItem from "./MenuItem";
 import { getIcon } from "../../helpers";
