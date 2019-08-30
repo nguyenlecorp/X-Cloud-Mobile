@@ -9,9 +9,7 @@ import {
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { withNavigation } from "react-navigation";
-import * as Svg from 'react-native-svg';
-
-const { Defs, LinearGradient, Path, Stop } = Svg;
+import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg';
 
 import MenuItem from "../../components/AppMenu/MenuItem";
 import { fileActions } from "../../actions";
@@ -144,9 +142,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  return {
-    ...state
-  };
+  return { ...state };
 };
 
 export default (CreateFolderComposed = compose(
