@@ -25,18 +25,36 @@ class FileItem extends Component {
 
   onItemPress = () => {
     const { item, isFolder, navigation } = this.props;
-    if (isFolder) {
-      // Enter in folder
-      this.props.dispatch(fileActions.getFolderContent(item.id));
-      navigation.setParams({ folderId: item.id });
+
+    if (this.props.filesState.selectedItems.length > 0) {
+      // If we are in selection mode, just perform selection action
+      return this.onItemLongPress();
+    }
+
+    const isSelected = this.props.filesState.selectedItems.filter(element => element.fileId == item.fileId).length > 0;
+
+    if (isSelected) {
+
     } else {
-      this.downloadFile(item ? item : null);
+      if (isFolder) {
+        // Enter in folder
+        this.props.dispatch(fileActions.getFolderContent(item.id));
+        navigation.setParams({ folderId: item.id });
+      } else {
+        this.downloadFile(item ? item : null);
+      }
     }
   }
 
   onItemLongPress = () => {
     // Select file/folder
-    this.props.dispatch(fileActions.selectFile(this.props.item));
+    const isSelected = this.props.filesState.selectedItems.filter(element => element.fileId == this.props.item.fileId).length > 0;
+
+    if (isSelected) {
+      this.props.dispatch(fileActions.deselectFile(this.props.item));
+    } else {
+      this.props.dispatch(fileActions.selectFile(this.props.item));
+    }
   }
 
   onDetailsClick = () => {
@@ -45,7 +63,8 @@ class FileItem extends Component {
   }
 
   render() {
-    const { item, isFolder, isSelected } = this.props;
+    const { item, isFolder } = this.props;
+    const isSelected = this.props.filesState.selectedItems.filter(element => element.fileId == item.fileId).length > 0;
     const extendStyles = StyleSheet.create({
       text: {
         color: "#000000"
@@ -69,7 +88,11 @@ class FileItem extends Component {
       );
 
     return (
-      <TouchableHighlight onPress={this.onItemPress} onLongPress={this.onItemLongPress} underlayColor="#FFF" style={[styles.container, extendStyles.containerBackground]}>
+      <TouchableHighlight
+        onPress={this.onItemPress}
+        onLongPress={this.onItemLongPress}
+        underlayColor={isSelected ? "#fff" : "#f2f5ff"}
+        style={[styles.container, extendStyles.containerBackground]}>
         <View style={styles.fileDetails}>
           <View style={styles.itemIcon}>
             {this.props.isBeingUploaded ? <IconFile isUploading={true} /> : itemIcon}

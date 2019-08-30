@@ -8,7 +8,8 @@ export const fileService = {
   createFolder,
   updateFolderMetadata,
   getSortFunction,
-  moveFile
+  moveFile,
+  deleteItems
 };
 
 async function setHeaders() {
@@ -109,6 +110,28 @@ async function moveFile(fileId, destination) {
     console.log(`Error moving file: ${error.message ? error.message : error}`)
     return error;
   }
+}
+
+function deleteItems(items) {
+  return new Promise((resolve, reject) => {
+
+    let fetchArray = [];
+
+    items.forEach(async item => {
+      const isFolder = !(item.fileId);
+      const headers = await setHeaders();
+      const url = isFolder ? `${process && process.env && process.env.REACT_APP_API_URL}/api/storage/folder/${item.id}` : `${process && process.env && process.env.REACT_APP_API_URL}/api/storage/bucket/${item.bucket}/file/${item.fileId}`
+
+      const fetchObj = fetch(url, {
+        method: 'DELETE',
+        headers
+      });
+
+      fetchArray.push(fetchObj);
+    });
+
+    Promise.all(fetchArray).then(() => resolve()).catch((err) => reject(err));
+  });
 }
 
 function getSortFunction(sortType) {

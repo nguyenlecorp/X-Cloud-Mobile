@@ -170,6 +170,11 @@ class Home extends Component {
     })
   }
 
+  handleDeleteSelectedItems() {
+    const itemsToDelete = this.props.filesState.selectedItems;
+    this.props.dispatch(fileActions.deleteItems(itemsToDelete, this.props.filesState.folderContent.currentFolder));
+  }
+
   handleDeleteSelectedItem() {
     const itemToDelete = this.props.filesState.selectedFile;
     const token = this.props.authenticationState.token;
@@ -655,7 +660,7 @@ class Home extends Component {
 
         <View style={{ height: 17.5 }}></View>
 
-        <AppMenu navigation={navigation} downloadFile={this.downloadFile} />
+        <AppMenu navigation={navigation} downloadFile={this.downloadFile} deleteItems={this.handleDeleteSelectedItems.bind(this)} />
 
         <View style={styles.breadcrumbs}>
           <Text style={styles.breadcrumbsTitle}>

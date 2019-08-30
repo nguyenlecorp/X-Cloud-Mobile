@@ -143,6 +143,9 @@ class AppMenu extends Component {
 
             <MenuItem name="create"
               onClickHandler={() => this.handleFolderCreate(folderContent.id)} />
+
+            {this.props.filesState.selectedItems.length > 0 ? <MenuItem name="delete" onClickHandler={this.props.deleteItems} /> : <View></View>}
+
           </View>
           <MenuItem name="settings"
             onClickHandler={() => { this.props.dispatch(layoutActions.openSettings()); }} />
