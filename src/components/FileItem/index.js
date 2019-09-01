@@ -23,6 +23,17 @@ class FileItem extends Component {
     this.downloadFile = this.props.downloadFile;
   }
 
+  itemIsSelected = (item) => {
+    const itemIsFolder = !(item.fileId);
+
+    const filteredItems = this.props.filesState.selectedItems.filter((element) => {
+      const elementIsFolder = !(element.fileId);
+      return itemIsFolder ? elementIsFolder && element.bucket == item.bucket : !elementIsFolder && element.fileId == item.fileId;
+    });
+
+    return filteredItems.length > 0;
+  }
+
   onItemPress = () => {
     const { item, isFolder, navigation } = this.props;
 
@@ -31,7 +42,7 @@ class FileItem extends Component {
       return this.onItemLongPress();
     }
 
-    const isSelected = this.props.filesState.selectedItems.filter(element => element.fileId == item.fileId).length > 0;
+    const isSelected = this.itemIsSelected(item);
 
     if (isSelected) {
 
@@ -48,7 +59,7 @@ class FileItem extends Component {
 
   onItemLongPress = () => {
     // Select file/folder
-    const isSelected = this.props.filesState.selectedItems.filter(element => element.fileId == this.props.item.fileId).length > 0;
+    const isSelected = this.itemIsSelected(this.props.item);
 
     if (isSelected) {
       this.props.dispatch(fileActions.deselectFile(this.props.item));
@@ -64,14 +75,11 @@ class FileItem extends Component {
 
   render() {
     const { item, isFolder } = this.props;
-    const isSelected = this.props.filesState.selectedItems.filter(element => element.fileId == item.fileId).length > 0;
+    const isSelected = this.itemIsSelected(item);
+    
     const extendStyles = StyleSheet.create({
-      text: {
-        color: "#000000"
-      },
-      containerBackground: {
-        backgroundColor: isSelected ? "#f2f5ff" : "#fff"
-      },
+      text: { color: "#000000" },
+      containerBackground: { backgroundColor: isSelected ? "#f2f5ff" : "#fff" },
     });
 
     const itemIcon = isFolder ? (

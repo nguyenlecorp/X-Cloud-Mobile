@@ -59,7 +59,10 @@ export function filesReducer(state = initialState, action) {
 
     case fileActionTypes.SELECT_FILE:
       // Check if file object is already on selection list
-      let isAlreadySelected = state.selectedItems.filter(element => action.payload.fileId == element.fileId).length > 0;
+      let isAlreadySelected = state.selectedItems.filter(element => {
+        const elementIsFolder = !(element.fileId);
+        return elementIsFolder ? action.payload.bucket == element.bucket : action.payload.fileId == element.fileId
+      }).length > 0;
 
       return {
         ...state,
