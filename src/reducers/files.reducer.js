@@ -71,7 +71,10 @@ export function filesReducer(state = initialState, action) {
       };
 
     case fileActionTypes.DESELECT_FILE:
-      let removedItem = state.selectedItems.filter(element => action.payload.fileId != element.fileId);
+      let removedItem = state.selectedItems.filter(element => {
+        const elementIsFolder = !(element.fileId);
+        return elementIsFolder ? action.payload.bucket != element.bucket : action.payload.fileId != element.fileId;
+      });
       return {
         ...state,
         selectedItems: removedItem
