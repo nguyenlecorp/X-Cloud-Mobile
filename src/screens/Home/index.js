@@ -175,6 +175,10 @@ class Home extends Component {
     this.props.dispatch(fileActions.deleteItems(itemsToDelete, this.props.filesState.folderContent.currentFolder));
   }
 
+  openDeleteSelectedItemsComfirmation() {
+    this.modalDeleteFiles.current.open();
+  }
+
   handleDeleteSelectedItem() {
     const itemToDelete = this.props.filesState.selectedFile;
     const token = this.props.authenticationState.token;
@@ -501,13 +505,14 @@ class Home extends Component {
   }
 
   getDeleteItemsModal = () => {
+    const multipleFiles = this.props.filesState.selectedItems.length > 1;
     return (
       <Modal ref={this.modalDeleteFiles} style={{ padding: 24 }}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <View>
             <Image source={require('../../../assets/images/logo.png')} style={{ width: 55, height: 29, marginBottom: 22 }} />
-            <Text style={{ fontSize: 27, fontFamily: 'CircularStd-Bold' }}>Delete item.</Text>
-            <Text style={{ fontSize: 17, color: '#737880', marginTop: 15 }}>Please confirm you want to delete this item. This action can’t be undone.</Text>
+            <Text style={{ fontSize: 27, fontFamily: 'CircularStd-Bold' }}>Delete item{multipleFiles ? 's' : ''}.</Text>
+            <Text style={{ fontSize: 17, color: '#737880', marginTop: 15 }}>Please confirm you want to delete this item{multipleFiles ? 's' : ''}. This action can’t be undone.</Text>
 
             <View style={{ flexDirection: 'row', marginTop: 40 }}>
               <TouchableHighlight style={{
@@ -532,7 +537,7 @@ class Home extends Component {
                 marginLeft: 20,
                 width: '45%'
               }} onPress={() => {
-                this.handleDeleteSelectedItem();
+                this.handleDeleteSelectedItems();
                 this.closeDeleteItemsModal();
               }}>
                 <Text style={{ color: '#fff', fontFamily: 'CerebriSans-Bold', fontSize: 16 }}>Confirm</Text>
@@ -660,7 +665,7 @@ class Home extends Component {
 
         <View style={{ height: 17.5 }}></View>
 
-        <AppMenu navigation={navigation} downloadFile={this.downloadFile} deleteItems={this.handleDeleteSelectedItems.bind(this)} />
+        <AppMenu navigation={navigation} downloadFile={this.downloadFile} deleteItems={this.openDeleteSelectedItemsComfirmation.bind(this)} />
 
         <View style={styles.breadcrumbs}>
           <Text style={styles.breadcrumbsTitle}>
