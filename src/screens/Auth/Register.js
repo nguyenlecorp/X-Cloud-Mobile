@@ -313,7 +313,9 @@ class Register extends Component {
 
                   this.setState({ isLoading: true, registerButtonClickedOnce: true }, () => {
                     if (this.isValidStep3()) {
-                      this.doRegister();
+                      setTimeout(() => {
+                        this.doRegister();
+                      }, 1000)
                     } else {
                       this.setState({ isLoading: false });
                     }
