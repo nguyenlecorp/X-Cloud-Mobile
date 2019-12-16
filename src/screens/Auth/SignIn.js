@@ -11,6 +11,7 @@ import {
   Image,
   KeyboardAvoidingView
 } from "react-native";
+import Intro from './Intro'
 
 import { utils } from './../../helpers'
 
@@ -23,7 +24,8 @@ class SignIn extends Component {
       pasword: '',
       showTwoFactor: false,
       twoFactorCode: '',
-      isLoading: false
+      isLoading: false,
+      showIntro: true
     };
   }
 
@@ -155,7 +157,14 @@ class SignIn extends Component {
     }
   }
 
+  finishIntro() {
+    this.setState({ showIntro: false })
+  }
+
   render() {
+    if (this.state.showIntro) {
+      return <Intro onFinish={this.finishIntro.bind(this)} />
+    }
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <View style={[styles.containerCentered, this.state.isLoading ? { opacity: 0.5 } : {}]}>

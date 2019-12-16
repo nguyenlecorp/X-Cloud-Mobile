@@ -95,7 +95,8 @@ async function moveFile(fileId, destination) {
       fileId,
       destination
     })
-    const res = await fetch(`${REACT_APP_API_URL}/api/storage/moveFile`, {
+
+    const res = await fetch(`${REACT_APP_API_URL || 'https://cloud.internxt.com'}/api/storage/moveFile`, {
       method: "POST",
       headers,
       body: data
