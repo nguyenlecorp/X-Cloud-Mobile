@@ -13,6 +13,8 @@ import {
   KeyboardAvoidingView
 } from "react-native";
 import bip39 from 'react-native-bip39';
+import Intro from './Intro'
+
 
 import { utils } from '../../helpers'
 
@@ -32,7 +34,9 @@ class Register extends Component {
       isLoading: false,
       registerButtonClickedOnce: false,
 
-      appState: AppState.currentState
+      appState: AppState.currentState,
+
+      showIntro: true
     };
 
   }
@@ -146,7 +150,15 @@ class Register extends Component {
 
   }
 
+  finishIntro() {
+    this.setState({ showIntro: false })
+  }
+
   render() {
+    if (this.state.showIntro) {
+      return <Intro onFinish={this.finishIntro.bind(this)} />
+    }
+
     if (this.state.registerStep == 1) {
       return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
