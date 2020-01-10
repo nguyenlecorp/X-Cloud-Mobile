@@ -17,13 +17,13 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.10</string>
+	<string>1.1.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>expf25ca4eba7b34a80bec63ad8bf3adb71</string>
+				<string>expb072b19ba4a34b22b4aa10fc7a8781f9</string>
 			</array>
 		</dict>
 		<dict>
@@ -61,7 +61,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>Allow X Cloud to access your calendar</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow X Cloud to use your camera to be able to upload pictures</string>
+	<string>Allow X Cloud to use your camera</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Allow X Cloud to access your contacts</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -71,9 +71,9 @@
 	<key>NSMotionUsageDescription</key>
 	<string>Allow X Cloud to access your device's accelerometer</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Allow X Cloud to save photos</string>
+	<string>Give X Cloud permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow X Cloud to access your photos to be able to upload pictures</string>
+	<string>Give X Cloud permission to access your photos</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Allow X Cloud to access your reminders</string>
 	<key>UILaunchStoryboardName</key>
