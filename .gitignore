@@ -1,5 +1,5 @@
-node_modules/**/*
-.expo/*
+node_modules/
+.expo/
 npm-debug.*
 .DS_Store
 .env
@@ -143,7 +143,8 @@ android/app/prodKernel
 android/app/src
 ios/x-cloud/Supporting/shell*
 ios/x-cloud/Supporting/EXShell.plist
-android/app/inxt-android-keystore.jks
+android/inxt-android-keystore.jks
+*.jks
 
 ### Xcode ###
 # Xcode

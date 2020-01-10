@@ -17,8 +17,6 @@
   <uses-permission android:name="android.permission.WAKE_LOCK" />
 
   <!-- ADD PERMISSIONS HERE -->
-  <uses-permission android:name="com.android.vending.BILLING" />
-  
   <!-- BEGIN OPTIONAL PERMISSIONS -->
   <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
   <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
@@ -53,14 +51,12 @@
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
     android:largeHeap="true"
-    android:networkSecurityConfig="@xml/network_security_config"
     android:usesCleartextTraffic="true">
 
     <activity
       android:name=".LauncherActivity"
       android:exported="true"
       android:launchMode="singleTask"
-      android:screenOrientation="portrait"
       android:theme="@android:style/Theme.Translucent.NoTitleBar">
     </activity>
 
@@ -78,7 +74,7 @@
       android:theme="@style/Theme.Exponent.Splash"
       android:windowSoftInputMode="adjustResize">
       <intent-filter>
-        <data android:scheme="exp6b2a44a6709f4e8d8f306106f9e6b8fb"/>
+        <data android:scheme="expb072b19ba4a34b22b4aa10fc7a8781f9"/>
 
         <action android:name="android.intent.action.VIEW"/>
 
@@ -117,41 +113,19 @@
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
     <!-- WHEN_PREPARING_SHELL_REMOVE_FROM_HERE -->
     <!-- ADD DEV SETTINGS HERE -->
-    <activity android:name="abi32_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- BEGIN_SDK_31 -->
-    <activity android:name="abi31_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- END_SDK_31 -->
-    <!-- BEGIN_SDK_30 -->
-    <activity android:name="abi30_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- END_SDK_30 -->
-    <!-- BEGIN_SDK_29 -->
-    <activity android:name="abi29_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- END_SDK_29 -->
-    <!-- BEGIN_SDK_28 -->
-    <activity android:name="abi28_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- END_SDK_28 -->
-    <!-- BEGIN_SDK_27 -->
-    <activity android:name="abi27_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- END_SDK_27 -->
-    <!-- BEGIN_SDK_26 -->
-    <activity android:name="abi26_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- END_SDK_26 -->
+    <!-- BEGIN_SDK_36 -->
+    <activity android:name="abi36_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
+    <!-- END_SDK_36 -->
+    <!-- BEGIN_SDK_35 -->
+    <activity android:name="abi35_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
+    <!-- END_SDK_35 -->
+    <!-- BEGIN_SDK_34 -->
+    <activity android:name="abi34_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
+    <!-- END_SDK_34 -->
+    <!-- BEGIN_SDK_33 -->
+    <activity android:name="abi33_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
+    <!-- END_SDK_33 -->
     <!-- WHEN_PREPARING_SHELL_REMOVE_TO_HERE -->
-
-    <activity
-      android:name=".ExponentDevActivity"
-      android:exported="true"
-      android:label="@string/dev_activity_name"
-      android:screenOrientation="portrait"
-      android:theme="@style/Theme.Exponent.Dark"
-      android:windowSoftInputMode="adjustPan">
-    </activity>
-
-    <activity
-      android:name=".oauth.OAuthWebViewActivity"
-      android:screenOrientation="portrait"
-      android:theme="@style/Theme.Exponent.Light">
-    </activity>
 
     <activity
         android:name="net.openid.appauth.RedirectUriReceiverActivity"
@@ -164,17 +138,77 @@
       </intent-filter>
     </activity>
 
+    <!-- START OF STRIPE SCHEMES -->
     <activity
-      android:name=".oauth.OAuthResultActivity">
+        android:exported="true"
+        android:launchMode="singleTask"
+        android:name="expo.modules.payments.stripe.RedirectUriReceiver"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="expo.modules.payments.stripe.efd0ef6d-12a9-4f6a-9b18-12cda3f58371" />
+        </intent-filter>
     </activity>
-
+    <!-- Versioned Activity for Stripe -->
+    <!-- BEGIN_SDK_36 -->
     <activity
-      android:name="abi32_0_0.expo.modules.appauth.AppAuthBrowserActivity">
+      android:exported="true"
+      android:launchMode="singleTask"
+      android:name="abi36_0_0.expo.modules.payments.stripe.RedirectUriReceiver"
+      android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="abi36_0_0.expo.modules.payments.stripe" />
+      </intent-filter>
     </activity>
-
+    <!-- END_SDK_36 -->
+		<!-- BEGIN_SDK_35 -->
+		<activity
+			android:exported="true"
+			android:launchMode="singleTask"
+			android:name="abi35_0_0.expo.modules.payments.stripe.RedirectUriReceiver"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+					<category android:name="android.intent.category.DEFAULT" />
+					<category android:name="android.intent.category.BROWSABLE" />
+					<data android:scheme="abi35_0_0.expo.modules.payments.stripe" />
+			</intent-filter>
+		</activity>
+		<!-- END_SDK_35 -->
+    <!-- BEGIN_SDK_34 -->
     <activity
-      android:name=".chrometabs.ChromeTabsManagerActivity">
+      android:exported="true"
+      android:launchMode="singleTask"
+      android:name="abi34_0_0.expo.modules.payments.stripe.RedirectUriReceiver"
+      android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <category android:name="android.intent.category.BROWSABLE" />
+          <data android:scheme="abi34_0_0.expo.modules.payments.stripe" />
+      </intent-filter>
     </activity>
+    <!-- END_SDK_34 -->
+    <!-- BEGIN_SDK_33 -->
+    <activity
+      android:exported="true"
+      android:launchMode="singleTask"
+      android:name="abi33_0_0.expo.modules.payments.stripe.RedirectUriReceiver"
+      android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <category android:name="android.intent.category.BROWSABLE" />
+          <data android:scheme="abi33_0_0.expo.modules.payments.stripe" />
+      </intent-filter>
+    </activity>
+    <!-- END_SDK_33 -->
+    <!-- END OF STRIPE SCHEMES -->
 
     <activity
       android:name=".experience.ErrorActivity"
@@ -301,15 +335,28 @@
     <!-- BEGIN GOOGLE MAPS CONFIG -->
     <meta-data
       android:name="com.google.android.geo.API_KEY"
-      android:value="AIzaSyCPyKmt6in3JwAsogYikNNjor8qgU9stRQ"/>
+      android:value="AIzaSyDh7eDB9snEFSYtf-k0gfxA45HFoR0L--I"/>
     <!-- END GOOGLE MAPS CONFIG -->
+
+    <!-- ADD GOOGLE MOBILE ADS CONFIG HERE -->
+    <!-- BEGIN GOOGLE MOBILE ADS CONFIG -->
+    <meta-data
+      android:name="com.google.android.gms.ads.APPLICATION_ID"
+      android:value="ca-app-pub-3940256099942544~3347511713"/>
+    <meta-data android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT" android:value="true"/>
+    <!-- END GOOGLE MOBILE ADS CONFIG -->
 
     <!-- ADD BRANCH CONFIG HERE -->
 
-    <!-- The Facebook SDK runs FacebookInitProvider on startup and crashes if there isn't an ID here -->
-    <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="fb0"/>
+    <!-- ADD FACEBOOK APP ID CONFIG HERE -->
+    <!-- ADD FACEBOOK APP DISPLAY NAME CONFIG HERE -->
+    <!-- Tags below need to be in one line with no whitespace after android:value -->
+    <!-- in order for XDL to be able to replace values in them -->
+    <meta-data android:name="com.facebook.sdk.AutoLogAppEventsEnabled" android:value="false"/>
+    <meta-data android:name="com.facebook.sdk.AutoInitEnabled" android:value="false"/>
+    <meta-data android:name="com.facebook.sdk.AdvertiserIDCollectionEnabled" android:value="false"/>
 
-    <meta-data android:name="standaloneStripeScheme" android:value="b313a89d-fd22-451d-8179-f3b1243f1953" />
+    <meta-data android:name="standaloneStripeScheme" android:value="efd0ef6d-12a9-4f6a-9b18-12cda3f58371" />
   </application>
 
 </manifest>
